@@ -9,10 +9,9 @@ type PageProps = {
   params: {
     chatId: string;
   };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function ChatPage({ params, searchParams }: PageProps) {
+async function ChatPage({ params }: PageProps) {
   // Get user authentication
   const { userId } = await auth();
 
