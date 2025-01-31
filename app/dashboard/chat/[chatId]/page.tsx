@@ -6,40 +6,39 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 interface ChatPageProps {
-  params: {
-    chatId: string;  // Params are passed as strings from Next.js routing
-  };
-}
+    params: {
+      chatId: Id<"chats">;
+    };
+  }
+  
 
-async function Chatpage({ params }: ChatPageProps) {
-  const { chatId } = params;
+async function Chatpage({params}:ChatPageProps) {
 
-  // Convert chatId from string to Id<"chats"> using type assertion
-  const chatIdTyped = chatId as Id<"chats">;
+    const { chatId } = params;
 
-  // Get user authentication
+    // Get user authentication
   const { userId } = await auth();
 
   if (!userId) {
     redirect("/");
   }
 
-  try {
+   try {
     // Get Convex client and fetch chat and messages
-    const convex = getConvexClient();
+   const convex = getConvexClient();
 
-    // Get messages
-    const initialMessages = await convex.query(api.messages.list, { chatId: chatIdTyped });
+   // Get messages
+   const initialMessages = await convex.query(api.messages.list, { chatId });
 
-    return (
-      <div className="flex-1 overflow-hidden">
-        <ChatInterface chatId={chatIdTyped} initialMessages={initialMessages} />
+  return (
+    <div className="flex-1 overflow-hidden">
+        <ChatInterface chatId={chatId} initialMessages={initialMessages} />
       </div>
-    );
-  } catch (error) {
+  )
+   } catch (error) {
     console.error("🔥 Error loading chat:", error);
-    redirect("/dashboard");
-  }
+    redirect("/dashboard");  
+   }
 }
 
-export default Chatpage;
+export default Chatpage
