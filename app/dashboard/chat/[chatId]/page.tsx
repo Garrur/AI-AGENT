@@ -5,39 +5,40 @@ import { getConvexClient } from "@/lib/convex";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-// Define the ChatPageProps interface
 interface ChatPageProps {
-  params: {
-    chatId: Id<"chats">; // Assuming chatId is being passed as a parameter in the route
-  };
-}
+    params: {
+      chatId: Id<"chats">;
+    };
+  }
+  
 
-async function Chatpage({ params }: ChatPageProps) {
-  const { chatId } = params; // params is already an object, no need for await
+async function Chatpage({params}:ChatPageProps) {
 
-  // Get user authentication
+    const { chatId } = await params;
+
+    // Get user authentication
   const { userId } = await auth();
 
   if (!userId) {
     redirect("/");
   }
 
-  try {
+   try {
     // Get Convex client and fetch chat and messages
-    const convex = getConvexClient();
+   const convex = getConvexClient();
 
-    // Get messages
-    const initialMessages = await convex.query(api.messages.list, { chatId });
+   // Get messages
+   const initialMessages = await convex.query(api.messages.list, { chatId });
 
-    return (
-      <div className="flex-1 overflow-hidden">
+  return (
+    <div className="flex-1 overflow-hidden">
         <ChatInterface chatId={chatId} initialMessages={initialMessages} />
       </div>
-    );
-  } catch (error) {
+  )
+   } catch (error) {
     console.error("🔥 Error loading chat:", error);
-    redirect("/dashboard");
-  }
+    redirect("/dashboard");  
+   }
 }
 
-export default Chatpage;
+export default Chatpage
