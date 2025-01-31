@@ -5,7 +5,7 @@ import { getConvexClient } from "@/lib/convex";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-// Update the type definition of params to be just an object, no Promise involved
+// Define the ChatPageProps interface
 interface ChatPageProps {
   params: {
     chatId: Id<"chats">; // Assuming chatId is being passed as a parameter in the route
