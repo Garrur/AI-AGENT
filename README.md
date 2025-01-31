@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Chat Application with Next.js 15
 
-## Getting Started
+A sophisticated AI chat application built with **Next.js 15**, featuring real-time conversations, advanced prompt caching, and intelligent tool orchestration powered by **LangChain** and **Claude 3.5 Sonnet**. This project integrates modern technologies like **Clerk** for authentication, **Convex** for real-time data storage, and **IBM's WxFlows** for advanced tool integration.
 
-First, run the development server:
+---
+
+## 🚀 Before You Get Started
+
+Before diving into the project, make sure to:
+
+1. **Sign Up for a Free Clerk Account**: [Clerk](https://clerk.com/)  
+   Clerk provides seamless authentication for your application.
+
+2. **Sign Up for IBM's Free WxFlows Tools**: [IBM WxFlows](https://www.ibm.com/wxflows)  
+   WxFlows enables quick integration of various data sources like YouTube transcripts, Google Books API, and custom tools.
+
+---
+
+## ✨ Features
+
+- **🤖 Advanced AI Chat Interface**: Powered by **Claude 3.5 Sonnet** for intelligent and context-aware conversations.
+- **🎨 Modern UI**: Built with **Tailwind CSS** for a responsive and sleek design.
+- **🔐 Authentication**: Secure user authentication with **Clerk**.
+- **💾 Real-Time Data Storage**: Utilizes **Convex** for seamless real-time data management.
+- **⚡ Next.js 15 & React 19**: Built with the latest versions for optimal performance.
+- **🌊 Advanced Streaming**: Custom implementation for real-time token streaming and tool execution feedback.
+- **📱 Mobile-Friendly**: Fully responsive design for all devices.
+- **🧠 Prompt Caching**: Optimized token usage with **Anthropic's caching feature**.
+- **🔧 Intelligent Tool Orchestration**: Powered by **LangGraph** for advanced tool management.
+- **📚 Data Source Integration**: Seamless integration with **IBM's WxFlows** for YouTube transcripts, Google Books API, and custom data sources.
+
+---
+
+## 🚀 Advanced Features
+
+### **AI and Prompt Management**
+- **Prompt Caching**: Reduces token usage with efficient caching.
+- **Context Window**: Manages a 4096-token context window for optimal performance.
+- **Tool-Augmented Responses**: Enhances AI capabilities with custom tools.
+- **Context-Aware Conversations**: Intelligent conversation management for better user interaction.
+
+### **Tool Integration**
+- **WxFlows Integration**: Quick integration of various data sources.
+  - YouTube transcripts
+  - Google Books API
+  - Custom data source tooling
+
+### **LangChain & LangGraph Features**
+- **State Management**: Sophisticated state handling with **StateGraph**.
+- **Tool Orchestration**: Advanced tool management with **ToolNode**.
+- **Memory Management**: Efficient context tracking with **MemorySaver**.
+- **Message Optimization**: Intelligent message trimming and context management.
+
+### **Streaming Implementation**
+- **Custom Streaming Solution**: Real-time token streaming with tool execution feedback.
+- **Error Handling**: Robust error handling for failed tool calls.
+- **Workarounds**: Solutions for **LangChainAdapter** limitations.
+
+### **Real-Time Features**
+- **Live Updates**: Instant message delivery and updates.
+- **Tool Visualization**: Real-time display of tool interactions.
+- **History Management**: Efficient tracking of message history.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: Next.js 15.1.3
+- **UI Library**: React 19.0.0
+- **Styling**: Tailwind CSS
+- **Authentication**: Clerk
+- **Database**: Convex
+- **AI Integration**: LangChain
+- **Icons**: Lucide React & Radix UI Icons
+- **Type Safety**: TypeScript
+
+---
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following:
+
+1. **Node.js**: Latest LTS version recommended.
+2. **Package Manager**: PNPM, NPM, or Yarn.
+3. **Clerk Account**: For authentication. [Sign up here](https://clerk.dev).
+4. **Convex Account**: For real-time database. [Sign up here](https://convex.dev).
+5. **Anthropic API Key**: For AI capabilities. [Get your API key](https://www.anthropic.com).
+
+---
+
+## 🔧 Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+ANTHROPIC_API_KEY=your_anthropic_api_key
