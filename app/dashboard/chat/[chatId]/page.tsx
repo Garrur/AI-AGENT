@@ -6,15 +6,16 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 interface ChatPageProps {
-    params: {
-      chatId: Id<"chats">;
-    };
-  }
+  params: Promise<{
+    chatId: Id<"chats">;
+  }>;
+}
+
   
 
 async function Chatpage({params}:ChatPageProps) {
 
-    const { chatId } = params;
+    const { chatId } = await params;
 
     // Get user authentication
   const { userId } = await auth();
