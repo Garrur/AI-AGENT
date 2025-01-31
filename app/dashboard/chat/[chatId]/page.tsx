@@ -14,7 +14,7 @@ interface ChatPageProps {
 
 async function Chatpage({params}:ChatPageProps) {
 
-    const { chatId } = await params;
+    const { chatId } =  params;
 
     // Get user authentication
   const { userId } = await auth();
